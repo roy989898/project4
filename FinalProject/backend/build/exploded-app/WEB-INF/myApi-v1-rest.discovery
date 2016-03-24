@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/grHiZDKxre_yVBvmXC5Ob3bsDhY\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/t0D9r2Z_iDIGQOfT4iwKbi6ffnA\"",
  "discoveryVersion": "v1",
  "id": "myApi:v1",
  "name": "myApi",
@@ -13,10 +13,10 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://myApplicationId.appspot.com/_ah/api/myApi/v1/sayHi/",
- "basePath": "/_ah/api/myApi/v1/sayHi/",
+ "baseUrl": "https://myApplicationId.appspot.com/_ah/api/myApi/v1/",
+ "basePath": "/_ah/api/myApi/v1/",
  "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
- "servicePath": "myApi/v1/sayHi/",
+ "servicePath": "myApi/v1/",
  "batchPath": "batch",
  "parameters": {
   "alt": {
@@ -73,6 +73,15 @@
   }
  },
  "schemas": {
+  "JokeTeller": {
+   "id": "JokeTeller",
+   "type": "object",
+   "properties": {
+    "joke": {
+     "type": "string"
+    }
+   }
+  },
   "MyBean": {
    "id": "MyBean",
    "type": "object",
@@ -86,7 +95,7 @@
  "methods": {
   "sayHi": {
    "id": "myApi.sayHi",
-   "path": "{name}",
+   "path": "sayHi/{name}",
    "httpMethod": "POST",
    "parameters": {
     "name": {
@@ -100,6 +109,17 @@
    ],
    "response": {
     "$ref": "MyBean"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "sayJoke": {
+   "id": "myApi.sayJoke",
+   "path": "sayJoke",
+   "httpMethod": "POST",
+   "response": {
+    "$ref": "JokeTeller"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

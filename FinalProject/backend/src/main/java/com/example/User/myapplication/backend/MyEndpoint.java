@@ -6,6 +6,7 @@
 
 package com.example.User.myapplication.backend;
 
+import com.example.JokeTeller;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -31,6 +32,13 @@ public class MyEndpoint {
         response.setData("Hi, " + name);
 
         return response;
+    }
+
+    @ApiMethod(name = "sayJoke")
+    public JokeTeller sayJoke() {
+
+
+        return new JokeTeller();
     }
 
 }
