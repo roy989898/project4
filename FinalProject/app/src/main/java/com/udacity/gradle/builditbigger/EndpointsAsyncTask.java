@@ -16,6 +16,11 @@ class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
     private boolean isLocal = true;
+    private BackWard bw;
+
+    public void setBw(BackWard bw) {
+        this.bw = bw;
+    }
 
     @Override
     protected String doInBackground(Context... params) {
@@ -64,6 +69,10 @@ class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        bw.taskReturn(result);
+    }
+
+    interface BackWard {
+        void taskReturn(String taskresult);
     }
 }

@@ -6,11 +6,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import pom2.poly.com.jokedisplay.JokeDisplayActivityMainActivity;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements EndpointsAsyncTask.BackWard {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,14 @@ public class MainActivity extends ActionBarActivity {
     public void tellJoke(View view) {
         /*String joke=new JokeTeller().getJoke();
         Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();*/
-       new EndpointsAsyncTask().execute(this);
+       EndpointsAsyncTask task=new EndpointsAsyncTask();
+        task.setBw(this);
+        task.execute(this);
     }
 
 
+    @Override
+    public void taskReturn(String taskresult) {
+        Toast.makeText(this,taskresult,Toast.LENGTH_LONG).show();
+    }
 }
