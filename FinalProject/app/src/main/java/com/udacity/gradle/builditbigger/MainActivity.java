@@ -6,7 +6,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import pom2.poly.com.jokedisplay.JokeDisplayActivityMainActivity;
 
@@ -45,7 +44,7 @@ public class MainActivity extends ActionBarActivity implements EndpointsAsyncTas
     public void tellJoke(View view) {
         /*String joke=new JokeTeller().getJoke();
         Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();*/
-       EndpointsAsyncTask task=new EndpointsAsyncTask();
+        EndpointsAsyncTask task = new EndpointsAsyncTask();
         task.setBw(this);
         task.execute(this);
     }
@@ -53,6 +52,8 @@ public class MainActivity extends ActionBarActivity implements EndpointsAsyncTas
 
     @Override
     public void taskReturn(String taskresult) {
-        Toast.makeText(this,taskresult,Toast.LENGTH_LONG).show();
+        Intent displayIntent = new Intent(this, JokeDisplayActivityMainActivity.class);
+        displayIntent.putExtra(JokeDisplayActivityMainActivity.GET_JOKE_KEY, taskresult);
+        startActivity(displayIntent);
     }
 }
