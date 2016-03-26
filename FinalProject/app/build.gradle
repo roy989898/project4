@@ -6,6 +6,9 @@ android {
     dexOptions {
         javaMaxHeapSize "2g"
     }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
 
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
@@ -15,6 +18,8 @@ android {
         versionName "1.0"
 
         multiDexEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
