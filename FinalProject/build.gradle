@@ -17,3 +17,28 @@ allprojects {
         jcenter()
     }
 }
+
+
+task testTheSyncwithServer {
+
+    dependsOn = [":backend:appengineRun",":app:connectedAndroidTest",":backend:appengineStop"]
+
+    printf "testTheSyncwithServer Finish!!!!"
+
+}
+
+task hello1 {
+
+    printf "hello1"
+
+}
+task hello2 {
+
+    printf "hello2"
+
+}
+task hello3 {
+
+    printf "hello3"
+
+}

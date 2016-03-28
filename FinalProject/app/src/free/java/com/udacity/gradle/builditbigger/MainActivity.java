@@ -15,7 +15,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import pom2.poly.com.jokedisplay.JokeDisplayActivityMainActivity;
 
 
-public class MainActivity extends ActionBarActivity  {
+public class MainActivity extends ActionBarActivity {
 
     private Button btTellJoke;
     private InterstitialAd mInterstitialAd;
@@ -50,18 +50,19 @@ public class MainActivity extends ActionBarActivity  {
         }
 
     }
-private void showJokeDisplayAvtivity(){
-    EndpointsAsyncTask task = new EndpointsAsyncTask();
-    task.setBw(new EndpointsAsyncTask.BackWard() {
-        @Override
-        public void taskReturn(String taskresult) {
-            Intent displayIntent = new Intent(getApplicationContext(), JokeDisplayActivityMainActivity.class);
-            displayIntent.putExtra(JokeDisplayActivityMainActivity.GET_JOKE_KEY, taskresult);
-            startActivity(displayIntent);
-        }
-    });
-    task.execute(getApplicationContext());
-}
+
+    private void showJokeDisplayAvtivity() {
+        EndpointsAsyncTask task = new EndpointsAsyncTask();
+        task.setBw(new EndpointsAsyncTask.BackWard() {
+            @Override
+            public void taskReturn(String taskresult) {
+                Intent displayIntent = new Intent(getApplicationContext(), JokeDisplayActivityMainActivity.class);
+                displayIntent.putExtra(JokeDisplayActivityMainActivity.GET_JOKE_KEY, taskresult);
+                startActivity(displayIntent);
+            }
+        });
+        task.execute(getApplicationContext());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,12 +92,11 @@ private void showJokeDisplayAvtivity(){
         //when click the button ,if ad load,show the AD,if not yet,go to the joke show activity
         if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
-        }else{
+        } else {
             showJokeDisplayAvtivity();
         }
 
     }
-
 
 
 }
